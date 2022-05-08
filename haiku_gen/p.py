@@ -2,6 +2,7 @@
 from random import *
 from tkinter import *
 from time import *
+import colorsys
 
 h = open("haikus.txt","r")
 haikus = h.readlines()
@@ -103,11 +104,20 @@ class App(Frame):
         self.r=randint(220,255)
         self.g=randint(220,255)
         self.b=randint(220,255)
-        self.win.config(bg="#%02x%02x%02x"%(self.r,self.g,self.b))
-        self.h.config(bg="#%02x%02x%02x"%(self.r,self.g,self.b))
-        self.htemp.config(bg="#%02x%02x%02x"%(self.r,self.g,self.b))
-        self.config(bg="#%02x%02x%02x"%(self.r,self.g,self.b))
+        color = tuple(round(i * 255) for i in colorsys.hsv_to_rgb(time()*0.3,1,1))
+        self.win.config(bg="#%02x%02x%02x"%color)
+        self.h.config(bg="#%02x%02x%02x"%color)
+        self.htemp.config(bg="#%02x%02x%02x"%color)
+        self.config(bg="#%02x%02x%02x"%color)
         
 
+
+
+
 a=App(Tk())
-a.mainloop()
+
+#same as a.mainloop() but now you can add a.color() to run every 'frame'
+while True:
+    a.update_idletasks()
+    a.update()
+    a.color()
