@@ -1,4 +1,3 @@
-#to attempt to rave type in "_rave_" into the Entry box (with underscores) and click "Apply"
 from random import *
 from tkinter import *
 from time import *
@@ -75,16 +74,8 @@ class App(Frame):
     def ApplyWords(self):
         self.words = self.box.get().split(" ")
         print(self.words)
-        if self.words[0]!="_rave_":
-            self.haikut_new = rewrite(self.words,self.haikut)
-            self.htemp.config(text=self.haikut_new)
-        else:
-            self.t0 = time()
-            self.t1 = time()
-            while self.t1-self.t0<3:
-                if time()!=self.t1:
-                    self.color()
-                    self.t1=time()
+        self.haikut_new = rewrite(self.words,self.haikut)
+        self.htemp.config(text=self.haikut_new)
 
     def GoLeft(self):
         self.change_i(-1)
