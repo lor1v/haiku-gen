@@ -66,6 +66,10 @@ class App(Frame):
 
         self.button = Button(self,text="Color",command=self.color,width=12)
         self.button.grid(row=6,column=3,pady=5)
+
+        self.rave = False
+        self.raveButton = Button(self,text="RAVE",command=self.toggleRave,width=12)
+        self.raveButton.grid(row=7,column=3,pady=5)
         
       
     def ApplyWords(self):
@@ -104,6 +108,17 @@ class App(Frame):
         self.r=randint(220,255)
         self.g=randint(220,255)
         self.b=randint(220,255)
+
+        color = (self.r, self.g, self.b)
+        self.win.config(bg="#%02x%02x%02x"%color)
+        self.h.config(bg="#%02x%02x%02x"%color)
+        self.htemp.config(bg="#%02x%02x%02x"%color)
+        self.config(bg="#%02x%02x%02x"%color)
+
+    def toggleRave(self):
+        self.rave = not(self.rave)
+    
+    def doRave(self): 
         color = tuple(round(i * 255) for i in colorsys.hsv_to_rgb(time()*0.3,1,1))
         self.win.config(bg="#%02x%02x%02x"%color)
         self.h.config(bg="#%02x%02x%02x"%color)
@@ -120,4 +135,5 @@ a=App(Tk())
 while True:
     a.update_idletasks()
     a.update()
-    a.color()
+    if(a.rave):
+        a.doRave()
