@@ -1,2 +1,2 @@
 # haiku-gen
-Python project using tkinter (still without "rave" functionality)
+Python project using tkinter (now with "rave" functionality)
