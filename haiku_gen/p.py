@@ -1,3 +1,4 @@
+#to attempt to rave type in "_rave_" into the Entry box (with underscores) and click "Apply"
 from random import *
 from tkinter import *
 from time import *
@@ -75,7 +76,7 @@ class App(Frame):
         else:
             self.t0 = time()
             self.t1 = time()
-            while self.t1-self.t0<10:
+            while self.t1-self.t0<3:
                 if time()!=self.t1:
                     self.color()
                     self.t1=time()
